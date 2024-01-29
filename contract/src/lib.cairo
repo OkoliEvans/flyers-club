@@ -39,7 +39,7 @@ mod Wings_club {
         self.token.write(IERC20Dispatcher { contract_address: ether_on_goerli });
     }
 
-    #[external(v0)]
+    #[abi(embed_v0)]
     fn accept_deposit(ref self: ContractState, amount: u256) {
         let user = get_caller_address();
         let user_bal = self.user_record.read(user);
@@ -50,7 +50,7 @@ mod Wings_club {
         self.user_record.write(user, (user_bal + amount));
     }
 
-    #[external(v0)]
+    #[abi(embed_v0)]
     fn withdraw(ref self: ContractState, amount: u256, to: ContractAddress) {
         let caller = get_caller_address();
         let vault_bal = self.vault_balance.read();
