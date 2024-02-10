@@ -56,7 +56,7 @@ mod Wings_club {
         let vault_bal = self.vault_balance.read();
         assert(caller == self.owner.read(), 'unauthorized caller');
 
-        self.token.read().transfer(to, amount);
+        self.token.read().transfer(to, amount); 
         self.vault_balance.write(vault_bal - amount);
     }
 }
